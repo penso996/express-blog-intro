@@ -5,11 +5,6 @@ const port = 3000;
 // Cartella per file statici
 app.use(express.static("public/images"))
 
-// Rotta home
-app.get("/", (req, res) => {
-    res.send("Server del mio blog")
-})
-
 // Array di post
 const posts = [
     {
@@ -43,6 +38,16 @@ const posts = [
         tags: ["torta", "pasticceria"]
     }
 ];
+
+// Rotta home
+app.get("/", (req, res) => {
+    res.send("Server del mio blog")
+})
+
+// Rotta bacheca che restituisca il json dei post
+app.get("/bacheca", (req, res) => {
+    res.json(posts);
+})
 
 app.listen(port, () => {
     console.log("In ascolto sulla porta " + port)

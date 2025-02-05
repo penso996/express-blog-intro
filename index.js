@@ -1,17 +1,17 @@
 const express = require("express");
-const app = express();
+const index = express();
 const port = 3000;
 
 // Cartella per file statici
-app.use(express.static("public"))
+index.use(express.static("public"))
 
 // Rotta home
-app.get("/", (req, res) => {
+index.get("/", (req, res) => {
     res.send("Server del mio blog")
 })
 
 // Rotta bacheca che restituisca il json dei post
-app.get("/bacheca", (req, res) => {
+index.get("/bacheca", (req, res) => {
 
     // Array di post
     const posts = [
@@ -50,6 +50,6 @@ app.get("/bacheca", (req, res) => {
     res.json(posts);
 })
 
-app.listen(port, () => {
+index.listen(port, () => {
     console.log("In ascolto sulla porta " + port)
 })
